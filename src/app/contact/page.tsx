@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Linkedin, CheckSquare, AlertCircle, HelpCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, CheckSquare, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -94,7 +94,7 @@ export default function Contact() {
           <div className="relative h-64 bg-[#E7FF72] border-2 border-[#626A67] rounded-2xl shadow-[4px_4px_0px_0px_#626A67] overflow-hidden flex flex-col justify-end p-4 group">
             {/* Grid overlay for map visual */}
             <div className="absolute inset-0 bg-grid opacity-35"></div>
-            
+
             {/* Mock roads */}
             <div className="absolute top-1/3 left-0 w-full h-8 bg-[#626A67]/20 border-y border-[#626A67]/40 transform -rotate-12"></div>
             <div className="absolute top-0 left-1/2 w-8 h-full bg-[#626A67]/20 border-x border-[#626A67]/40 transform rotate-45"></div>
