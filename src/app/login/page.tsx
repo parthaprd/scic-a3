@@ -53,13 +53,12 @@ export default function Login() {
 
   const handleDemoLogin = (role: 'user' | 'admin') => {
     if (role === 'user') {
-      setEmail('demo@example.com');
-      setPassword('demo123');
+      setEmail('user@example.com');
+      setPassword('User@123');
     } else {
       setEmail('admin@example.com');
-      setPassword('admin123');
+      setPassword('Admin@123');
     }
-    // Auto clear warnings
     setFormErrors({});
     setErrors([]);
   };
@@ -152,22 +151,38 @@ export default function Login() {
         </form>
 
         {/* Demo Logins */}
-        <div className="mt-6 border-t-2 border-[#626A67] border-dashed pt-4 space-y-2">
+        <div className="mt-6 border-t-2 border-[#626A67] border-dashed pt-4 space-y-3">
           <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400 block text-center">
-            Zero-Setup Sandbox Mode
+            Demo Credentials — Click to Auto-Fill
           </label>
+
+          {/* Credentials display */}
+          <div className="grid grid-cols-2 gap-3 text-[9px] font-mono">
+            <div className="bg-white border border-[#626A67] rounded-lg p-2 space-y-0.5">
+              <p className="font-bold text-[#74E7E0] uppercase text-[8px]">👤 User Account</p>
+              <p className="text-gray-600 truncate">user@example.com</p>
+              <p className="text-gray-600">User@123</p>
+            </div>
+            <div className="bg-white border border-[#626A67] rounded-lg p-2 space-y-0.5">
+              <p className="font-bold text-[#E7FF72] uppercase text-[8px] [text-shadow:0_0_1px_#888]">⚡ Admin Account</p>
+              <p className="text-gray-600 truncate">admin@example.com</p>
+              <p className="text-gray-600">Admin@123</p>
+            </div>
+          </div>
+
+          {/* Auto-fill buttons */}
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => handleDemoLogin('user')}
               className="py-1.5 px-3 bg-[#74E7E0] border-2 border-[#626A67] rounded-lg shadow-[2px_2px_0px_0px_#626A67] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_0px_#626A67] active:translate-x-0 active:translate-y-0 text-[10px] font-bold text-[#111827] cursor-pointer"
             >
-              👤 Demo User
+              👤 Use User Account
             </button>
             <button
               onClick={() => handleDemoLogin('admin')}
               className="py-1.5 px-3 bg-[#E7FF72] border-2 border-[#626A67] rounded-lg shadow-[2px_2px_0px_0px_#626A67] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_0px_#626A67] active:translate-x-0 active:translate-y-0 text-[10px] font-bold text-[#111827] cursor-pointer"
             >
-              ⚡ Demo Admin
+              ⚡ Use Admin Account
             </button>
           </div>
         </div>
