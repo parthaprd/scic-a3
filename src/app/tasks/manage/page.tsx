@@ -17,6 +17,7 @@ export default function ManageTasks() {
 
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [loadingTasks, setLoadingTasks] = useState(true);
+  const [updating, setUpdating] = useState(false);
 
   // Search and Tab controls
   const [searchQuery, setSearchQuery] = useState('');
@@ -71,6 +72,7 @@ export default function ManageTasks() {
 
   const handleEditSubmit = async (formData: any) => {
     if (!editingTask) return;
+    setUpdating(true);
     try {
       const res = await taskService.updateTask(editingTask._id, formData);
       if (res.success) {
@@ -82,6 +84,8 @@ export default function ManageTasks() {
     } catch (err) {
       console.error('Failed to edit task:', err);
       alert('Error updating task.');
+    } finally {
+      setUpdating(false);
     }
   };
 
@@ -156,7 +160,7 @@ export default function ManageTasks() {
     const csvContent =
       'data:text/csv;charset=utf-8,' +
       [headers.join(','), ...rows.map((e) => e.join(','))].join('\n');
-    
+
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
@@ -219,11 +223,10 @@ export default function ManageTasks() {
             <button
               key={tab}
               onClick={() => { setActiveTab(tab); setSelectedIds([]); }}
-              className={`px-3 py-1.5 text-xs font-bold rounded uppercase border-2 transition-all cursor-pointer ${
-                activeTab === tab
-                  ? 'bg-[#E7FF72] border-[#626A67] shadow-[1px_1px_0px_0px_#626A67]'
-                  : 'bg-white border-[#626A67]/20 hover:border-[#626A67] text-gray-500 hover:text-black'
-              }`}
+              className={`px-3 py-1.5 text-xs font-bold rounded uppercase border-2 transition-all cursor-pointer ${activeTab === tab
+                ? 'bg-[#E7FF72] border-[#626A67] shadow-[1px_1px_0px_0px_#626A67]'
+                : 'bg-white border-[#626A67]/20 hover:border-[#626A67] text-gray-500 hover:text-black'
+                }`}
             >
               {tab === 'all' ? 'All Tasks' : tab === 'todo' ? 'To Do' : tab === 'in-progress' ? 'In Progress' : 'Completed'}
             </button>
@@ -369,9 +372,8 @@ export default function ManageTasks() {
               return (
                 <div
                   key={task._id}
-                  className={`bg-[#F4F0E8] border-2 border-[#626A67] rounded-xl p-4 shadow-[2px_2px_0px_0px_#626A67] space-y-3 relative group transition-all ${
-                    isSelected ? 'border-dashed bg-amber-50/20' : ''
-                  }`}
+                  className={`bg-[#F4F0E8] border-2 border-[#626A67] rounded-xl p-4 shadow-[2px_2px_0px_0px_#626A67] space-y-3 relative group transition-all ${isSelected ? 'border-dashed bg-amber-50/20' : ''
+                    }`}
                 >
                   {/* Category & Checkbox */}
                   <div className="flex justify-between items-center">

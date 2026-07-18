@@ -9,7 +9,7 @@ import Button from '../../../components/common/Button';
 import Card from '../../../components/common/Card';
 import TaskCard from '../../../components/tasks/TaskCard';
 import TaskForm from '../../../components/tasks/TaskForm';
-import { Calendar, Tag, Paperclip, Clock, Shield, AlertTriangle, ArrowLeft, Edit, Trash2, CheckCircle2 } from 'lucide-react';
+import { Calendar, Tag, Paperclip, Clock, Shield, AlertTriangle, ArrowLeft, Edit, Trash2, CheckCircle2, X } from 'lucide-react';
 import Link from 'next/link';
 
 export default function TaskDetails() {
@@ -22,7 +22,7 @@ export default function TaskDetails() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  
+
   // Status dropdown edit
   const [newStatus, setNewStatus] = useState<any>('todo');
 
@@ -42,7 +42,7 @@ export default function TaskDetails() {
       if (data.success && data.task) {
         setTask(data.task);
         setNewStatus(data.task.status);
-        
+
         // Fetch related tasks (same category)
         const relData = await taskService.getTasks({ category: data.task.category, limit: 5 });
         if (relData.success && relData.tasks) {
