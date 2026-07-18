@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nexus-primary: #74E7E0;
+  --color-nexus-secondary: #E7FF72;
+  --color-nexus-accent: #E7FF72;
+  --color-nexus-surface: #F4F0E8;
+  --color-nexus-text: #111827;
+  --color-nexus-text-secondary: #4B5563;
+  --color-nexus-border: #626A67;
+
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  --nexus-primary: #74E7E0;
+  --nexus-secondary: #E7FF72;
+  --nexus-surface: #F4F0E8;
+  --nexus-text: #111827;
+  --nexus-border: #626A67;
+}
+
+body {
+  background-color: var(--nexus-surface);
+  color: var(--nexus-text);
+  font-family: var(--font-geist-sans), sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--nexus-surface);
+  border-left: 2px solid var(--nexus-border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--nexus-border);
+  border: 2px solid var(--nexus-surface);
+  border-radius: 4px;
+}
+
+/* Neo-Brutalist Common Elements */
+.neo-border {
+  border: 2px solid var(--nexus-border);
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px 0px var(--nexus-border);
+}
+
+.neo-shadow-sm {
+  box-shadow: 2px 2px 0px 0px var(--nexus-border);
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px 0px var(--nexus-border);
+}
+
+.neo-card {
+  background-color: var(--nexus-surface);
+  border: 2px solid var(--nexus-border);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0px 0px var(--nexus-border);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--nexus-border);
+}
+
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 2px solid var(--nexus-border);
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px 0px var(--nexus-border);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px 0px var(--nexus-border);
+}
+
+.neo-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px 0px var(--nexus-border);
+}
+
+.neo-btn-primary {
+  background-color: var(--nexus-primary);
+  color: var(--nexus-text);
+}
+
+.neo-btn-secondary {
+  background-color: var(--nexus-secondary);
+  color: var(--nexus-text);
+}
+
+.neo-btn-outline {
+  background-color: transparent;
+  color: var(--nexus-text);
+}
+.neo-btn-outline:hover {
+  background-color: rgba(98, 106, 103, 0.1);
+}
+
+.neo-btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.neo-input {
+  width: 100%;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 2px solid var(--nexus-border);
+  border-radius: 8px;
+  color: var(--nexus-text);
+  font-family: var(--font-geist-mono), monospace;
+  transition: focus 0.2s ease;
+}
+
+.neo-input:focus {
+  outline: none;
+  border-color: var(--nexus-primary);
+  box-shadow: 2px 2px 0px 0px var(--nexus-border);
+}
+
+/* Atmospheric grid lines background */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(98, 106, 103, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(98, 106, 103, 0.05) 1px, transparent 1px);
+}
